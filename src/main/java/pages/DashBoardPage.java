@@ -4,28 +4,23 @@ import base.BasePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.testng.Assert;
 
 public class DashBoardPage extends BasePage {
     public DashBoardPage(WebDriver driver){
         super(driver);
     }
 
-    @FindBy(xpath = "(//div[@role=\"presentation\"])[3]")
-    private WebElement statusBar;
+    @FindBy(id="js_6")
+    private WebElement statusTextBar;
 
-    @FindBy(xpath = "//a[@id=\"creation_hub_entrypoint\"]")
-    private WebDriver dashboard;
-
-    @FindBy(xpath = "(//div/button[@type=\"submit\"])[1]")
+    @FindBy(xpath = "//span[text()='Post']")
     private WebElement submitButton;
 
-    public String statusText = "Hello World";
-
-    public void enterStatus(){
-        wait(statusBar);
-        statusBar.click();
-        statusBar.sendKeys(statusText);
+    public void enterStatus(String statusText) throws InterruptedException {
+        Thread.sleep(10000);
+        wait(statusTextBar);
+        statusTextBar.click();
+        statusTextBar.sendKeys(statusText);
     }
 
     public void postStatus(){

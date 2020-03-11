@@ -1,17 +1,12 @@
 package base;
 
-import org.openqa.selenium.Alert;
+import com.sun.org.apache.bcel.internal.ExceptionConstants;
+import org.openqa.selenium.ElementClickInterceptedException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
-import javax.swing.*;
-
-import static java.lang.Thread.currentThread;
-import static java.lang.Thread.sleep;
 
 public class BasePage {
     private static WebDriver driver;
@@ -21,20 +16,12 @@ public class BasePage {
     }
 
     public void wait(WebElement element){
-        WebDriverWait wait=new WebDriverWait(driver,10);
-        wait.until(ExpectedConditions.visibilityOf(element));
+        WebDriverWait wait=new WebDriverWait(driver,20);
+//        wait.until(ExpectedConditions.visibilityOf(element));
+        wait.until(ExpectedConditions.elementToBeClickable(element));
     }
 
-    public  void sendKeys(WebElement element,String param){
+    public void sendKeys(WebElement element,String param){
         element.sendKeys(param);
-    }
-
-    public void acceptAlertPopup() throws InterruptedException {
-        Alert alert = driver.switchTo().alert();
-        sleep(1000);
-        alert.accept();
-        sleep(1000);
-        Actions action = new Actions(driver);
-
     }
 }

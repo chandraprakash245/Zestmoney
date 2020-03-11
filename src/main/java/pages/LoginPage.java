@@ -7,24 +7,21 @@ import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
 
 public class LoginPage extends BasePage {
-    public LoginPage(WebDriver driver){
+    public LoginPage(WebDriver driver){ super(driver); }
 
-        super(driver);
-    }
-
-    @FindBy(xpath= "//input[@name='email']")
+    @FindBy(id= "email")
     private WebElement email;
 
-    @FindBy(xpath = "//input[@id=\"pass\"]" )
+    @FindBy(id = "pass" )
     private WebElement password;
 
-    @FindBy(xpath = "//input[@type='submit']")
-    private WebElement login;
+    @FindBy(id = "loginbutton")
+    private WebElement loginButton;
 
-    public void login(){
-        sendKeys(email,"chandru.245K@yahoo.in");
-        sendKeys(password,"keerthi245$");
-        login.click();
+    public void login(String userEmail,String userPassword){
+        sendKeys(email,userEmail);
+        sendKeys(password,userPassword);
+        loginButton.click();
     }
 
 }
