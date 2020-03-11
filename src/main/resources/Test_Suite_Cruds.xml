@@ -1,0 +1,13 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Test_suite_Cruds" parallel="false" preserve-order="true">
+        <test name="Login Test" preserve-order="true">
+            <classes>
+                <class name="test.LoginTest"/>
+            </classes>
+        </test>
+        <test name="Mandatory Field Test" preserve-order="true">
+            <classes>
+                <class name="test.LoginTest"/>
+            </classes>
+        </test>
+</suite>
